@@ -5,13 +5,13 @@ VisualStudioVersion = 15.0.26124.0
 MinimumVisualStudioVersion = 15.0.26124.0
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{4CFE7136-97E2-4674-B1A7-6EBCD48F430D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "YourChoise.Services.Activities", "src\YourChoise.Services.Activities\YourChoise.Services.Activities.csproj", "{D3D42455-8EF4-4D80-A7B2-D68190C9BFA2}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "YourChoice.Services.Activities", "src\YourChoice.Services.Activities\YourChoice.Services.Activities.csproj", "{D3D42455-8EF4-4D80-A7B2-D68190C9BFA2}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "YourChoise.Services.Identity", "src\YourChoise.Services.Identity\YourChoise.Services.Identity.csproj", "{DD2ECE4F-C538-4C7D-B12E-864F059EE01D}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "YourChoice.Services.Identity", "src\YourChoice.Services.Identity\YourChoice.Services.Identity.csproj", "{DD2ECE4F-C538-4C7D-B12E-864F059EE01D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "YourChoise.Api", "src\YourChoise.Api\YourChoise.Api.csproj", "{43D0B496-48E3-4508-92DE-91018A12BE7B}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "YourChoice.Api", "src\YourChoice.Api\YourChoice.Api.csproj", "{43D0B496-48E3-4508-92DE-91018A12BE7B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "YourChoise.Common", "src\YourChoise.Common\YourChoise.Common.csproj", "{6FB70A8D-C3C5-478A-87F9-EF393BA5AA56}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "YourChoice.Common", "src\YourChoice.Common\YourChoice.Common.csproj", "{6FB70A8D-C3C5-478A-87F9-EF393BA5AA56}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
