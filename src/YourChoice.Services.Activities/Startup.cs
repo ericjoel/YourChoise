@@ -11,8 +11,12 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 using YourChoice.Common.Commands;
+using YourChoice.Common.Mongo;
 using YourChoice.Common.RabbitMq;
+using YourChoice.Services.Activities.Domain.Repositories;
 using YourChoice.Services.Activities.Handlers;
+using YourChoice.Services.Activities.Repositories;
+using YourChoice.Services.Activities.Services;
 
 namespace YourChoice.Services.Activities
 {
@@ -29,8 +33,14 @@ namespace YourChoice.Services.Activities
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
+            services.AddLogging();
+            services.AddMongoDB((Configuration));
             services.AddRabbitMq(Configuration);
             services.AddScoped<ICommandHandler<CreateActivity>, CreateActivityHandler>();
+            services.AddScoped<IActivityRepository, ActivityRepository>();
+            services.AddScoped<ICategoryRepository, CategoryRepository>();
+            services.AddScoped<IDatabaseSeeder, CustomMongoSeeder>();
+            services.AddScoped<IActivityService, ActivityService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -46,6 +56,7 @@ namespace YourChoice.Services.Activities
                 app.UseHsts();
             }
 
+            app.ApplicationServices.GetService<IDatabaseInitializer>().InitializeAsync();
             //app.UseHttpsRedirection();
             app.UseMvc();
         }

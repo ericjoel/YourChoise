@@ -10,12 +10,8 @@ namespace YourChoice.Common.Mongo
     {
         public static void AddMongoDB(this IServiceCollection services, IConfiguration configuration)
         {
-            services.Configure<MongoOptions>(c =>
-                {
-                    c.ConnectionString = configuration.GetSection("Mongo:ConnectionString").Value;
-                    c.Database = configuration.GetSection("Mongo:Database").Value;
-                    c.Seed = Convert.ToBoolean(configuration.GetSection("Mongo:Seed").Value);
-                });
+            services.Configure<MongoOptions>(configuration.GetSection("Mongo"));
+            
             services.AddSingleton<MongoClient>(c =>
             {
                 var options = c.GetService<IOptions<MongoOptions>>();
@@ -30,6 +26,9 @@ namespace YourChoice.Common.Mongo
 
                 return client.GetDatabase(options.Value.Database);
             });
+
+            services.AddScoped<IDatabaseInitializer, MongoInitializer>();
+            services.AddScoped<IDatabaseSeeder, MongoSeeder>();
         }
     }
 }

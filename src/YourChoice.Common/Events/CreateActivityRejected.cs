@@ -1,7 +1,10 @@
+using System;
+
 namespace YourChoice.Common.Events
 {
     public class CreateActivityRejected : IRejectedEvent
     {
+        public Guid Id { get; set; }
         public string Reason { get; }
         public string Code { get; }
 
@@ -9,8 +12,9 @@ namespace YourChoice.Common.Events
         {
         }
 
-        public CreateActivityRejected(string reason, string code)
+        public CreateActivityRejected(Guid id, string reason, string code)
         {
+            Id = id;
             Reason = reason;
             Code = code;
         }

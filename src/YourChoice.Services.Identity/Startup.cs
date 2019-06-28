@@ -3,6 +3,10 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using YourChoice.Common.Commands;
+using YourChoice.Common.RabbitMq;
+using YourChoice.Services.Identity.Domain.Services;
+using YourChoice.Services.Identity.Handlers;
 
 namespace YourChoice.Services.Identity
 {
@@ -19,6 +23,10 @@ namespace YourChoice.Services.Identity
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
+            services.AddLogging();
+            services.AddRabbitMq(Configuration);
+            services.AddScoped<ICommandHandler<CreateUser>, CreateUserHandler>();
+            services.AddScoped<IEncrypter, Encrypter>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
